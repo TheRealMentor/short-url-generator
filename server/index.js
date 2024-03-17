@@ -1,5 +1,6 @@
 const express = require("express");
 const { connectWithDB } = require("./dbConnection");
+const { shortenUrl } = require("./shortenUrl");
 
 const app = express();
 const port = 3000;
@@ -10,7 +11,12 @@ const port = 3000;
 // connectWithDB();
 
 app.get("/api/shorten_url", (req, res) => {
-  res.json({ message: "Generating short url!" });
+  const shortUrl = shortenUrl(req.query);
+  res.json({
+    error_code: 0,
+    message: "Here's the short url!",
+    short_url: shortUrl,
+  });
 });
 
 app.get("/api/analytics", (req, res) => {
