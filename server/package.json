@@ -1,20 +1,20 @@
 {
-  "name": "short-url-backend",
-  "version": "1.0.0",
-  "description": "Backend Server for Short URL Generator",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js"
-  },
-  "author": "TheRealMentor",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "express": "^4.18.3",
-    "mongoose": "^8.2.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
-  }
+    "name": "short-url-backend",
+    "version": "1.0.0",
+    "description": "Backend Server for Short URL Generator",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start:dev": "nodemon ./index.js"
+    },
+    "author": "TheRealMentor",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "express": "^4.18.3",
+        "mongoose": "^8.2.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    }
 }

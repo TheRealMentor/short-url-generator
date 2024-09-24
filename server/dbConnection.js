@@ -1,17 +1,16 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
-const connectWithDB = () => {
-  mongoose.connect("<your-db-url>", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+// Replace with your MongoDB connection string
+const mongoURI = 'mongodb://localhost:27017/short_url_gen'
 
-  const db = mongoose.connection;
+const connectWithDB = async () => {
+    try {
+        await mongoose.connect(mongoURI)
+        console.log('MongoDB connected successfully')
+    } catch (err) {
+        console.error('Failed to connect to MongoDB', err)
+        process.exit(1) // Exit the process with failure
+    }
+}
 
-  db.on("error", console.error.bind(console, "MongoDB connection error:"));
-  db.once("open", () => {
-    console.log("Connected to MongoDB");
-  });
-};
-
-module.exports.connectWithDB = connectWithDB;
+module.exports.connectWithDB = connectWithDB

@@ -1,35 +1,28 @@
-const express = require("express");
-const { connectWithDB } = require("./dbConnection");
-const { shortenUrl } = require("./shortenUrl");
+const express = require('express')
+const { connectWithDB } = require('./dbConnection')
+const { shortenUrl } = require('./api')
 
-const app = express();
-const port = 3000;
+const app = express()
+const port = 3000
+
+/**
+ * Middleware
+ */
+app.use(express.json())
 
 /**
  * Establishes the connection with database
  */
-// connectWithDB();
+connectWithDB()
 
-app.get("/api/shorten_url", (req, res) => {
-  const shortUrl = shortenUrl(req.query);
-  res.json({
-    error_code: 0,
-    message: "Here's the short url!",
-    short_url: shortUrl,
-  });
-});
-
-app.get("/api/analytics", (req, res) => {
-  res.json({ message: "Fetching the analytics of the url!" });
-});
-
-app.get("/api/short_url_list", (req, res) => {
-  res.json({ message: "Fetching all the short urls for you!" });
-});
+/**
+ * Routes
+ */
+app.get('/api/shorten_url', shortenUrl)
 
 /**
  * Start the server and listen on the specified port
  */
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+    console.log(`Server running at http://localhost:${port}`)
+})
